@@ -9,6 +9,7 @@ import java.time.temporal.ChronoUnit;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 /**
  * Teste des événements simples, sans répétition
  */
@@ -29,7 +30,7 @@ public class SimpleEventTest {
     // Un événement simple
     // November 1st, 2020, 22:30, 89 minutes
     Event simple = new Event(SIMPLE_EVENT, nov_1_2020_22_30, min_89);
-    
+
     // Un événement qui chevauche 2 jours
     // November 1st, 2020, 22:30, 120 minutes
     Event overlapping = new Event("Overlapping event", nov_1_2020_22_30, min_120);
@@ -42,19 +43,20 @@ public class SimpleEventTest {
 
     @Test
     public void eventIsNotInDayBefore() {
-        assertFalse(simple.isInDay(nov_1_2020.minusDays(1)),  "Un événement n'a pas lieu avant son jour de début");
-        assertFalse(overlapping.isInDay(nov_1_2020.minusDays(1)),  "Un événement n'a pas lieu avant son jour de début");
+        assertFalse(simple.isInDay(nov_1_2020.minusDays(1)), "Un événement n'a pas lieu avant son jour de début");
+        assertFalse(overlapping.isInDay(nov_1_2020.minusDays(1)), "Un événement n'a pas lieu avant son jour de début");
     }
 
     @Test
     public void overlappingEventIsInDayAfter() {
-        assertFalse(simple.isInDay(nov_1_2020.plusDays(1)),      "Cet événement ne déborde pas sur le jour suivant");
-        assertTrue(overlapping.isInDay(nov_1_2020.plusDays(1)),  "Cet événement déborde sur le jour suivant");
+        assertFalse(simple.isInDay(nov_1_2020.plusDays(1)), "Cet événement ne déborde pas sur le jour suivant");
+        assertTrue(overlapping.isInDay(nov_1_2020.plusDays(1)), "Cet événement déborde sur le jour suivant");
     }
+
     @Test
     public void toStringShowsEventTitle() {
         assertTrue(simple.toString().contains(SIMPLE_EVENT),
-            "toString() doit montrer le titre de l'événement");
+                "toString() doit montrer le titre de l'événement");
     }
-    
+
 }

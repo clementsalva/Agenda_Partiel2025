@@ -7,24 +7,31 @@ import java.util.*;
  * Description : An agenda that stores events
  */
 public class Agenda {
+
+    private final List<Event> events = new ArrayList<>();
+
     /**
      * Adds an event to this agenda
      *
      * @param e the event to add
      */
     public void addEvent(Event e) {
-        // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        events.add(e);
     }
 
     /**
      * Computes the events that occur on a given day
      *
-     * @param day the day toi test
+     * @param day the day to test
      * @return a list of events that occur on that day
      */
     public List<Event> eventsInDay(LocalDate day) {
-        // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        List<Event> result = new ArrayList<>();
+        for (Event e : events) {
+            if (e.isInDay(day)) {
+                result.add(e);
+            }
+        }
+        return result;
     }
 }
