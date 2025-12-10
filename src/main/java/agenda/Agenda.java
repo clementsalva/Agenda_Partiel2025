@@ -55,7 +55,7 @@ public class Agenda {
             LocalDateTime endExisting = startExisting.plus(existing.getDuration());
 
             if (startE.isBefore(endExisting) && startExisting.isBefore(endE)) {
-                return false; // Il y a un conflit
+                return false;
             }
         }
         return true;
